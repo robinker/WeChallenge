@@ -12,7 +12,7 @@ router.route('/:id').get((req, res) => {
 })
 
 // update by id
-router.route('/:id').post((req, res) => {
+router.route('/:id').put((req, res) => {
     ReviewController.updateById(req, res)
 })
 

@@ -7,10 +7,8 @@ require('dotenv').config()
 const uri = process.env.DB_URI
 const port = process.env.PORT || 8080
 
-console.log(uri)
-
 const app = express()
-mongoose.connect(uri, { useNewUrlParser: true })
+mongoose.connect(uri, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(cors({ creadential: true }))
 app.use(express.json())

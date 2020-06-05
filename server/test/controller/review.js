@@ -21,14 +21,13 @@ const ReviewController = {
 
     findById: async (id) => {
         // if id is not number
-        if(!Number.isInteger(id)) {
-            return "ID must be a number"
-        }
+        if(isNaN(id)) return res.json("ID must be a number")
         const review = Review.filter(review => review.reviewID === id)
         return review[0]
     },
 
     updateById: async (id, message) => {
+        if(isNaN(id)) return res.json("ID must be a number")
         const review = Review.filter(review => review.reviewID === id)
         if(review.length === 0 ) return "No reviews found"
         review[0].review = message
