@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  webapp:
+    build: 
+      context: ./client
+      dockerfile: DockerFile
+    ports:
+      - "5555:80"
+
+  server:
+    build: 
+      context: ./server
+      dockerfile: DockerFile
+    ports:
+      - "8080:8080"
