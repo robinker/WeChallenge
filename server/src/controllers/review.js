@@ -9,7 +9,7 @@ const ReviewController = {
     findByKeyWord: async (query, res) => {
         try {
             if(!query) return res.status(400).send("No reviews found")
-            let reviews = await Review.find({ review: { $regex: query, $options: 'gi' } }).limit(5)
+            let reviews = await Review.find({ review: { $regex: query, $options: 'i' } }).limit(5)
             // add tag for keyword
             reviews = reviews.map(review => {
                 review.review = addKeywordTag(review.review, query)
