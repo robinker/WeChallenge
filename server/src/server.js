@@ -4,7 +4,7 @@ const cors = require('cors')
 
 require('dotenv').config()
 
-const uri = process.env.DB_URI || "mongodb+srv://pk:WeChallenge2020@cluster0-srjpl.mongodb.net/WeChallenge?retryWrites=true&w=majority"
+const uri = process.env.DB_URI || "mongodb+srv://localhost:27017/wechallenge"
 const port = process.env.PORT || 8080
 
 const app = express()
