@@ -1,6 +1,7 @@
 version: '3.5'
 
 services:
+
   webapp:
     build: 
       context: ./client
@@ -14,3 +15,16 @@ services:
       dockerfile: DockerFile
     ports:
       - "8080:8080"
+    depends_on:
+      - dataset
+      - database
+      
+  database:
+    image: mongo
+
+  dataset:
+    build: 
+      context: ./data_setup
+      dockerfile: DockerFile
+    depends_on:
+      - database

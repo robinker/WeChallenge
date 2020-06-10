@@ -11,16 +11,17 @@ mongoose.connect(uri, { useCreateIndex: true, useNewUrlParser: true, useUnifiedT
 
 const addReview = async (reviews) => {
     const result = await csv(reviews, { separator: ';' })
-    result.map(review => {
+    await Promise.all(result.map(review => {
         let data = new Review({ reviewID: parseInt(review.reviewID), review: review.review})
         return data.save()
-    })
+    }))
+    console.log("Add reviews complete")
 }
 
 const connection = mongoose.connection
 
 connection.once('open', () => {
     console.log("connected")
-    addReview(reviews).then(() => console.log("Add reviews complete"))
+    addReview(reviews)
 })
 
