@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const reviews = fs.readFileSync('./datasets/test_file.csv')
 const Review = require('./models/review.model')
 
-const uri = 'mongodb://localhost:27017/wechallenge'
+const uri = `mongodb://${process.env.SERVICE || 'localhost'}:27017/wechallenge`
 
 mongoose.connect(uri, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true })
 

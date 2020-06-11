@@ -18,6 +18,8 @@ services:
     depends_on:
       - dataset
       - database
+    environment: 
+      SERVICE: database
       
   database:
     image: mongo
@@ -28,3 +30,5 @@ services:
       dockerfile: DockerFile
     depends_on:
       - database
+    environment: 
+      SERVICE: database
