@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Button, Col, Row, Form } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import Search from '../component/Search'
 import axios from 'axios'
 import { BASE_API } from '../constant'
 
@@ -20,6 +19,8 @@ function SingleReview() {
                     if(res.data !== null){
                         setReview(res.data)
                         setText(res.data.review)
+                    } else {
+                        setReview(null)
                     }
                 })
         }
@@ -38,13 +39,13 @@ function SingleReview() {
                 setReview(res.data)
                 setText(res.data.review)
                 setIsEdit(false)
+                alert('Update success')
             }
         })
     }
 
     return (
         <>
-            <Search />
             {
                 review !== null ?
                     isEdit ?

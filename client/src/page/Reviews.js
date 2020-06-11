@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Search from '../component/Search'
 import axios from 'axios'
 import { Card } from 'react-bootstrap'
 import { BASE_API } from '../constant'
@@ -23,7 +22,6 @@ function Reviews() {
 
     return (
         <>
-            <Search />
             {
                 reviews.length !== 0 ?
                 reviews.map((review, index) => {
